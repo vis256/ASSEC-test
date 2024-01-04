@@ -14,14 +14,19 @@ import TestMenu from "./TestMenu";
 import { useLocalStorage } from "usehooks-ts";
 
 interface TestProps {
+  testName: string;
   test: Test;
   setTest: Dispatch<SetStateAction<Test | null>>;
+  setPreviousResults: Dispatch<SetStateAction<DataResults>>;
 }
 
-const Test = ({ test, setTest }: TestProps) => {
+const Test = ({ testName, test, setTest, setPreviousResults }: TestProps) => {
   const [page, setPage] = useLocalStorage<number>("TestPage", 0);
+  const [testFinished, setTestFinished] = useLocalStorage<boolean>(
+    "TestFinished",
+    false
+  );
   const [checkAnswer, setCheckAnswer] = useState<boolean>(false);
-  const [testFinished, setTestFinished] = useState<boolean>(false);
 
   const Navigator = () => (
     <Box
@@ -64,6 +69,7 @@ const Test = ({ test, setTest }: TestProps) => {
   return (
     <>
       <TestMenu
+        testName={testName}
         test={test}
         setTest={setTest}
         page={page}
@@ -72,6 +78,7 @@ const Test = ({ test, setTest }: TestProps) => {
         setCheckAnswer={setCheckAnswer}
         testFinished={testFinished}
         setTestFinished={setTestFinished}
+        setPreviousResults={setPreviousResults}
       />
       <Card
         sx={{

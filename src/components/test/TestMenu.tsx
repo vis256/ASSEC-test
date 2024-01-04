@@ -1,10 +1,12 @@
 import { Box, Button, Card, Typography } from "@mui/material";
+import dayjs from "dayjs";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 let localTestFinished = false;
 
 /** Local variable tracing when the test is finished to stop the timer timeout. */
 interface TestMenuProps {
+  testName: string;
   test: Test;
   setTest: Dispatch<SetStateAction<Test | null>>;
   page: number;
@@ -13,9 +15,11 @@ interface TestMenuProps {
   setCheckAnswer: Dispatch<SetStateAction<boolean>>;
   testFinished: boolean;
   setTestFinished: Dispatch<SetStateAction<boolean>>;
+  setPreviousResults: Dispatch<SetStateAction<DataResults>>;
 }
 
 const TestMenu = ({
+  testName,
   test,
   setTest,
   page,
@@ -24,6 +28,7 @@ const TestMenu = ({
   setCheckAnswer,
   testFinished,
   setTestFinished,
+  setPreviousResults,
 }: TestMenuProps) => {
   const [timer, setTimer] = useState<number>(
     Number(localStorage.getItem("TestTimer") ?? 0)
@@ -31,7 +36,6 @@ const TestMenu = ({
 
   useEffect(() => {
     startTimerUpdater();
-    console.log("aaaa")
   }, []);
 
   const startTimerUpdater = (run = false) => {
@@ -66,10 +70,23 @@ const TestMenu = ({
       }
     }
 
-    const percentage = Math.floor((score / test.questions.length) * 1000) / 10;
-    console.log(`${percentage}%`);
-    return percentage;
+    return Math.floor((score / test.questions.length) * 1000) / 10;
   };
+
+  const finishTest = () => {
+    setTest(null);
+    setTimer(0);
+    localStorage.setItem("TestTimer", "0");
+    setPage(0);
+    localTestFinished = false;
+    setTestFinished(false);
+  };
+
+  useEffect(() => {
+    if (testFinished) {
+      finishTest();
+    }
+  }, []);
 
   return (
     <Card
@@ -130,21 +147,26 @@ const TestMenu = ({
               setCheckAnswer(true);
               setTestFinished(true);
               localTestFinished = true;
+              setPreviousResults((old) => {
+                const id = dayjs().format("DD-MM-YYYY");
+                const curResult = {
+                  testName,
+                  result: getTestResults(),
+                };
+                if (!Object.keys(old).includes(id)) {
+                  old[id] = [curResult];
+                }
+                else {
+                  old[id].unshift(curResult);
+                }
+                return old;
+              });
             }}
           >
             Zakończ test
           </Button>
         ) : (
-          <Button
-            variant="outlined"
-            onClick={() => {
-              setTest(null);
-              setTimer(0);
-              setPage(0);
-              localTestFinished = false;
-              localStorage.setItem("TestTimer", "0");
-            }}
-          >
+          <Button variant="outlined" onClick={finishTest}>
             Wyjdź
           </Button>
         )}

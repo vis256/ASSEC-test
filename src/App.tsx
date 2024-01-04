@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import LoadQuestions from "./components/menu/LoadQuestions";
 import TestInfo from "./components/menu/TestInfo";
 import Test from "./components/test/Test";
+import PreviousResults from "./components/menu/PreviousResults";
 
 const App = () => {
   const [test, setTest] = useLocalStorage<Test | null>("TestData", null);
@@ -15,6 +16,10 @@ const App = () => {
   const [colorMode, setColorMode] = useLocalStorage<"light" | "dark">(
     "ColorMode",
     "dark"
+  );
+  const [previousResults, setPreviousResults] = useLocalStorage<DataResults>(
+    "PreviousResults",
+    {}
   );
   const theme = useMemo(
     () =>
@@ -66,16 +71,26 @@ const App = () => {
           }}
         >
           {test ? (
-            <Test test={test} setTest={setTest} />
+            <Test
+              testName={testName}
+              test={test}
+              setTest={setTest}
+              setPreviousResults={setPreviousResults}
+            />
           ) : (
             <>
               {questions && (
-                <TestInfo testName={testName} questions={questions} setTest={setTest} />
+                <TestInfo
+                  testName={testName}
+                  questions={questions}
+                  setTest={setTest}
+                />
               )}
               <LoadQuestions
                 setTestName={setTestName}
                 setQuestions={setQuestions}
               />
+              <PreviousResults previousResults={previousResults} />
             </>
           )}
         </Box>
