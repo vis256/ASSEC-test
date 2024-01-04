@@ -20,7 +20,11 @@ const TestInfo = ({ testName, questions, setTest }: TestInfoProps) => {
       const id = Math.floor(Math.random() * questions.length);
       if (!testQuestionsIds.includes(id)) {
         testQuestionsIds.push(id);
-        testQuestions.push(questions[id]);
+        const question = questions[id];
+        testQuestions.push({
+          label: question.label,
+          options: question.options.sort(() => 0.5 - Math.random()),
+        });
       }
     }
     setTest({ name: testName, questions: testQuestions });

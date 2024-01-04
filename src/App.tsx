@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import { useLocalStorage } from "usehooks-ts";
 
