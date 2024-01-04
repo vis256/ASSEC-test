@@ -21,9 +21,10 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
 
   const error = (msg: string, line: number) => {
     setErrorMsg(`${msg} (linia ${line})`);
+    return 1;
   };
 
-  const loadTasks = (fileStr: string) => {
+  const loadTasks = (fileStr: string): number => {
     let lastLine = 1;
     const newTasks: Question[] = [];
 
@@ -55,6 +56,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
     }
 
     setQuestions(newTasks);
+    return 0;
   };
 
   return (
@@ -75,8 +77,9 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
           variant="outlined"
           onClick={async () => {
             setLoading("local");
-            setTestName("PUT - BSI");
-            loadTasks(await (await fetch("src/data/pyta.dat")).text());
+            if (!loadTasks(await (await fetch("src/data/pyta.dat")).text())) {
+              setTestName("PUT - BSI");
+            }
             setLoading(null);
           }}
           startIcon={
@@ -110,7 +113,6 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
             }}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setLoading("upload");
-              console.log("aaaa")
               const file = event.target.files?.[0];
               if (file) {
                 const reader = new FileReader();
@@ -118,8 +120,9 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
                   if (loadEvent.target?.error || !reader.result) {
                     setErrorMsg("Wystąpił błąd podczas odczytu pliku");
                   } else {
-                    loadTasks(reader.result as string);
-                    setTestName(file.name);
+                    if (!loadTasks(reader.result as string)) {
+                      setTestName(file.name);
+                    }
                   }
                 };
                 reader.readAsText(file);
