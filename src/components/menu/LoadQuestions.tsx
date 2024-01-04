@@ -76,6 +76,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
         <Button
           variant="outlined"
           onClick={async () => {
+            setErrorMsg("");
             setLoading("local");
             if (!loadTasks(await (await fetch("src/data/pyta.dat")).text())) {
               setTestName("PUT - BSI");
@@ -112,6 +113,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
               display: "none",
             }}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setErrorMsg("");
               setLoading("upload");
               const file = event.target.files?.[0];
               if (file) {
@@ -129,7 +131,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
               } else {
                 setErrorMsg("Plik nie został prawidłowo przesłany");
               }
-              event.target.value = "";  // clear file input to allow same file to be uploaded again
+              event.target.value = ""; // clear file input to allow same file to be uploaded again
               setLoading(null);
             }}
           />
