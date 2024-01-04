@@ -41,10 +41,6 @@ const App = () => {
     [colorMode]
   );
 
-  useEffect(() => {
-    document.title = "Test online"
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <Box
