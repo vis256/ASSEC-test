@@ -92,7 +92,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
           }
           disabled={loading !== null}
         >
-          Zaduj domyślne zadania (PUT - BSI)
+          Załaduj domyślne zadania (PUT - BSI)
         </Button>
         <Button
           component="label"
