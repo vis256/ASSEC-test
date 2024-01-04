@@ -3,6 +3,7 @@ import {
   Box,
   Card,
   Checkbox,
+  Divider,
   FormControlLabel,
   IconButton,
   Typography,
@@ -98,31 +99,35 @@ const Test = ({ testName, test, setTest, setPreviousResults }: TestProps) => {
             display: "flex",
             flexDirection: "column",
             gap: 1,
-            ml: 4,
+            mx: 2,
+            mt: 2,
           }}
         >
           {test.questions[page].options.map((option, i) => (
-            <FormControlLabel
-              sx={{
-                color: checkAnswer
-                  ? option.isCorrect
-                    ? "green"
-                    : option.isSelected
-                    ? "red"
-                    : "inherit"
-                  : "inherit",
-              }}
-              key={i}
-              label={option.label}
-              checked={option.isSelected ?? false}
-              onChange={(_, checked) => {
-                if (!testFinished) {
-                  test.questions[page].options[i].isSelected = checked;
-                  setTest(test);
-                }
-              }}
-              control={<Checkbox />}
-            />
+            <>
+              {i !== 0 && <Divider />}
+              <FormControlLabel
+                sx={{
+                  color: checkAnswer
+                    ? option.isCorrect
+                      ? "green"
+                      : option.isSelected
+                      ? "red"
+                      : "inherit"
+                    : "inherit",
+                }}
+                key={i}
+                label={option.label}
+                checked={option.isSelected ?? false}
+                onChange={(_, checked) => {
+                  if (!testFinished) {
+                    test.questions[page].options[i].isSelected = checked;
+                    setTest(test);
+                  }
+                }}
+                control={<Checkbox />}
+              />
+            </>
           ))}
         </Box>
       </Card>
