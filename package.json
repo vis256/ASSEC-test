@@ -1,6 +1,6 @@
 {
   "name": "test_generator",
-  "homepage": "https://hi-im-simon.github.io/online-test",
+  "homepage": "https://hi-im-simon.github.io/Online-test",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
