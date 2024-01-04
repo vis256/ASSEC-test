@@ -92,7 +92,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
           }
           disabled={loading !== null}
         >
-          Załaduj domyślne zadania (PUT - BSI)
+          Załaduj domyślne pytania (PUT - BSI)
         </Button>
         <Button
           component="label"
@@ -106,7 +106,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
           }
           disabled={loading !== null}
         >
-          Załaduj własne zadania z pliku
+          Załaduj własne pytania z pliku
           <TextField
             type="file"
             sx={{
