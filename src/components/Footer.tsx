@@ -11,19 +11,22 @@ const Footer = () => {
         alignItems: "center",
         width: "100%",
         p: 1.5,
+        px: 10,
       }}
     >
       <Typography sx={{ textAlign: "center" }}>
-        Dane zapamiętywane są między sesjami,
-        więc możesz spokojnie przerwać test i wrócić do niego w dowolnej chwili.
+        Dane zapamiętywane są między sesjami, więc możesz spokojnie przerwać
+        test i wrócić do niego w dowolnej chwili.
       </Typography>
       <Link
         href="https://github.com/Hi-Im-Simon"
         sx={{
-          fontSize: 12,
+          position: "absolute",
+          right: 0,
+          width: 60,
         }}
       >
-        Wykonał: Szymon Stanisławski
+        Autor
       </Link>
     </Card>
   );

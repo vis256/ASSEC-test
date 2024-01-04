@@ -68,6 +68,7 @@ const Test = ({ test, setTest }: TestProps) => {
         setTest={setTest}
         page={page}
         setPage={setPage}
+        checkAnswer={checkAnswer}
         setCheckAnswer={setCheckAnswer}
         testFinished={testFinished}
         setTestFinished={setTestFinished}

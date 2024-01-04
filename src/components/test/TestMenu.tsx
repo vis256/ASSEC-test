@@ -9,6 +9,7 @@ interface TestMenuProps {
   setTest: Dispatch<SetStateAction<Test | null>>;
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
+  checkAnswer: boolean;
   setCheckAnswer: Dispatch<SetStateAction<boolean>>;
   testFinished: boolean;
   setTestFinished: Dispatch<SetStateAction<boolean>>;
@@ -19,6 +20,7 @@ const TestMenu = ({
   setTest,
   page,
   setPage,
+  checkAnswer,
   setCheckAnswer,
   testFinished,
   setTestFinished,
@@ -88,8 +90,11 @@ const TestMenu = ({
         }}
       >
         {!testFinished ? (
-          <Button variant="outlined" onClick={() => setCheckAnswer(true)}>
-            Pokaż odpowiedź
+          <Button
+            variant="outlined"
+            onClick={() => setCheckAnswer((old) => !old)}
+          >
+            {!checkAnswer ? "Pokaż odpowiedź" : "Ukryj odpowiedź"}
           </Button>
         ) : (
           <Typography
@@ -130,15 +135,16 @@ const TestMenu = ({
             Zakończ test
           </Button>
         ) : (
-          <Button 
-          variant="outlined"
-           onClick={() => {
-            setTest(null);
-            setTimer(0);
-            setPage(0);
-            localTestFinished = false;
-            localStorage.setItem("TestTimer", "0");
-           }}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              setTest(null);
+              setTimer(0);
+              setPage(0);
+              localTestFinished = false;
+              localStorage.setItem("TestTimer", "0");
+            }}
+          >
             Wyjdź
           </Button>
         )}
