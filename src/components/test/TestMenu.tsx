@@ -6,7 +6,6 @@ let localTestFinished = false;
 
 /** Local variable tracing when the test is finished to stop the timer timeout. */
 interface TestMenuProps {
-  testName: string;
   test: Test;
   setTest: Dispatch<SetStateAction<Test | null>>;
   page: number;
@@ -19,7 +18,6 @@ interface TestMenuProps {
 }
 
 const TestMenu = ({
-  testName,
   test,
   setTest,
   page,
@@ -150,7 +148,7 @@ const TestMenu = ({
               setPreviousResults((old) => {
                 const id = dayjs().format("DD-MM-YYYY");
                 const curResult = {
-                  testName,
+                  testName: test.name,
                   result: getTestResults(),
                 };
                 if (!Object.keys(old).includes(id)) {

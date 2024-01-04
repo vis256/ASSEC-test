@@ -72,7 +72,6 @@ const App = () => {
         >
           {test ? (
             <Test
-              testName={testName}
               test={test}
               setTest={setTest}
               setPreviousResults={setPreviousResults}
