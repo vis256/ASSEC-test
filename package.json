@@ -1,5 +1,6 @@
 {
   "name": "test_generator",
+  "homepage": "https://hi-im-simon.github.io/online-test",
   "private": true,
   "version": "0.0.0",
   "type": "module",
