@@ -61,10 +61,12 @@ const TestMenu = ({
           if (option.isSelected) balanceOfSelectedOptions--;
         }
       }
-      if (correctOptions === balanceOfSelectedOptions) {
-        score++;
-      } else {
-        score += Math.max(balanceOfSelectedOptions, 0) / correctOptions;
+      if (balanceOfSelectedOptions > correctOptions) {
+        if (correctOptions === balanceOfSelectedOptions) {
+          score++;
+        } else {
+          score += Math.max(balanceOfSelectedOptions, 0) / correctOptions;
+        }
       }
     }
 
