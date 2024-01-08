@@ -155,8 +155,7 @@ const TestMenu = ({
                 };
                 if (!Object.keys(old).includes(id)) {
                   old[id] = [curResult];
-                }
-                else {
+                } else {
                   old[id].unshift(curResult);
                 }
                 return old;
