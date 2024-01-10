@@ -53,6 +53,15 @@ const TestInfo = ({ testName, questions, setTest }: TestInfoProps) => {
       >
         Rozpocznij test (40 zadań)
       </Button>
+      <Button
+        variant="contained"
+        onClick={() => drawTasks(10)}
+        startIcon={loading ? <CircularProgress size="1.2rem" /> : <QuizIcon />}
+        disabled={loading}
+        fullWidth
+      >
+        Rozpocznij test (10 zadań)
+      </Button>
     </Card>
   );
 };
