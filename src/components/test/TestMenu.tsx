@@ -61,7 +61,7 @@ const TestMenu = ({
           if (option.isSelected) balanceOfSelectedOptions--;
         }
       }
-      if (balanceOfSelectedOptions > correctOptions) {
+      if (balanceOfSelectedOptions > 0) {
         if (correctOptions === balanceOfSelectedOptions) {
           score++;
         } else {
