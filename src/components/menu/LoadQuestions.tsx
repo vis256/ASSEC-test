@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import HomeIcon from "@mui/icons-material/Home";
+import animeGirl from "../../data/assec.jpg";
 
 interface LoadQuestionsProps {
   setTestName: Dispatch<SetStateAction<string>>;
@@ -64,8 +65,13 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
       sx={{
         width: "100%",
         p: 3,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 6,
       }}
     >
+      <img src={animeGirl} width={300} height={300}></img>
       <Box
         sx={{
           display: "flex",
@@ -79,7 +85,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
             setErrorMsg("");
             setLoading("local");
             if (!loadTasks(await (await fetch("src/data/pyta.dat")).text())) {
-              setTestName("PUT - BSI");
+              setTestName("PUT - ASSEC");
             }
             setLoading(null);
           }}
@@ -92,7 +98,7 @@ const LoadQuestions = ({ setTestName, setQuestions }: LoadQuestionsProps) => {
           }
           disabled={loading !== null}
         >
-          Załaduj domyślne pytania (PUT - BSI)
+          Załaduj domyślne pytania (PUT - ASSEC)
         </Button>
         <Button
           component="label"
