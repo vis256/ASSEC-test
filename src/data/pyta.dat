@@ -80,5 +80,4 @@
 80. Jakie informacje o koncie głównym posiada serwer kerberos: *tajny klucz symetryczny*[X]klucz publiczny*hasło*hash całego rekordu konta głównego
 81. Czy Windows może współpracować z linuxowym Kerberosem: *[X]Tak*Nie
 82. Na jakie ataki jest podatny Kerberos: *[X]Kerberoasting*[X]Golden Ticket
-83. Co to jest Docker rootless mode: *[X]Wariant Dockera, który nie jest włączony jako root
-
+83. Co to jest Docker rootless mode: *[X]Wariant Dockera, który nie jest włączony jako root*Specjalna edycja Dockera
