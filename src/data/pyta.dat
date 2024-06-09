@@ -72,7 +72,7 @@
 72. Które warunki powinno spełnić urządzenie sieciowe do użycia serwera Radius do AAA: *[X]urządzenie powinno podzielić się “sekretem” z serwerem*jest wystarczającym, by połączyć się z serwerem za pomocą jego adresu IP
 73. Który mechanizm systemowy może zostać wykorzystany przez dockera do poprawienia pracy kontenerów: *[X]przestrzeń nazw użytkownika*[X]chroot*[X]właściwości POSIX
 74. DNSKEY to *podpis cyfrowy klucza ZSK
-75. Które z elementów iFrame może zostać dezaktywowany poprzez atrybuty sandboxa: *[X]rodzicielska ramka nawigacyjna*[X]skrypty
+75. Które z elementów iFrame może zostać dezaktywowany poprzez atrybuty sandboxa: *[X]rodzicielska ramka nawigacyjna*[X]skrypty*[X]pop-up windows*[X]forms
 76. Implementacją sandboxa jest *[X]Polityka AppArmor*[X]chroot*[X]Docker
 77. Które elementy aplikacji Web podlegają ochronie przez politykę SOP w przeglądarce: *[X]komunikację między obiektami poprzez XMLHttpRequest* dostęp do ciasteczek ustawionych w innych dokumentach niezależnie od ich atrybuty domain *[X]dostęp do elementów DOM w innych dokumentach*[X]wywołania skryptów, w zależności od ich pochodzenia
 78. Które z wymienionych elementów zawsze (bezwzględnie) współdzielone pomiędzy aplikacjami uruchomionymi w kontenerach dockera i aplikacjami bezpośrednio w systemie operacyjnym: *[X]jądro systemu operacyjnego* system plików *przestrzeń Identyfikatorów użytkowników *przestrzeń Identyfikatorów procesów
