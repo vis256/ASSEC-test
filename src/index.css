@@ -1,6 +1,11 @@
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("/src/data/Comic\ Sans\ MS.ttf");
+}
+
 :root {
   height: 100%;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Comic Sans MS", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -21,4 +26,5 @@ body {
 
 * {
   box-sizing: border-box;
+  font-family: "Comic Sans MS", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
 }

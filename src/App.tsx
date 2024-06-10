@@ -27,10 +27,10 @@ const App = () => {
         palette: {
           mode: colorMode,
           background: {
-            paper: colorMode === "light" ? "#ebebeb" : undefined,
+            paper: colorMode === "light" ? "#FFC7ED" : "#9E7B93",
           },
           primary: {
-            main: "#d26415",
+            main: "#000",
           },
         },
         breakpoints: {
